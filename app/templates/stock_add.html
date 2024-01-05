@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+  <div class="text-center">
+  <div class="row justify-content-center">
+  <h1>Добавление склада</h1>
+  <form method="post" action="{{ url_for('stock_add') }}">
+    {{ form.hidden_tag() }}
+    <div class="mb-3">
+      {{ form.stockname.label(class="form-label") }}
+      {{ form.stockname(class="form-control") }}
+      {% for error in form.stockname.errors %}
+      <span style="color: yellow;">{{error}}</span>
+      {% endfor %}
+
+    </div>
+    <div class="mb-3">
+      {{ form.place.label(class="form-label") }}
+      {{ form.place(class="form-control") }}
+      {% for erorr in form.place.errors %}
+      <span style="color: red;">[{{ error }}]</span>
+      {% endfor %}
+    </div>
+    <div class="mb-3">
+      {{ form.hostname.label(class="form-label") }}
+      {{ form.hostname(class="form-control") }}
+      {% for erorr in form.hostname.errors %}
+      <span style="color: red;">[{{ error }}]</span>
+      {% endfor %}
+    </div>
+    <div class="mb-3">
+      {{ form.content.label(class="form-label") }}
+      {{ form.content(class="form-control") }}
+      {% for erorr in form.content.errors %}
+      <span style="color: red;">[{{ error }}]</span>
+      {% endfor %}
+    </div>
+    <div class="mb-3">
+      {{ form.contact.label(class="form-label") }}
+      {{ form.contact(class="form-control") }}
+      {% for erorr in form.contact.errors %}
+      <span style="color: red;">[{{ error }}]</span>
+      {% endfor %}
+    </div>
+    <div class="mb-3">
+      {{ form.capacity.label(class="form-label") }}
+      {{ form.capacity(class="form-control") }}
+      {% for erorr in form.capacity.errors %}
+      <span style="color: red;">[{{ error }}]</span>
+      {% endfor %}
+    </div>
+    <button type="submit" class="btn btn-primary">Добавить</button>
+  </form>
+    </div>
+  </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% if stocks %}
+<div class="container">
+  <div class="row justify-content-center">
+       <div class="col-md-8">
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Название</th>
+      <th scope="col">Местоположение</th>
+      <th scope="col">Владелец</th>
+      <th scope="col">Содержимое</th>
+      <th scope="col">Контакты</th>
+      <th scope="col">Вместимость</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for stock in stocks %}
+    <tr>
+      <th scope="row">{{ loop.index }}</th>
+      <td>{{ stock.stockname }}</td>
+      <td>{{ stock.place }}</td>
+      <td>{{ stock.hostname }}</td>
+      <td>{{ stock.content }}</td>
+      <td>{{ stock.contact }}</td>
+      <td>{{ stock.capacity }}</td>
+        <td>
+        <a href="{{ url_for('stock_redactor', id=stock.id) }}" class="btn btn-warning btn-sm">Редактировать</a>
+      </td>
+        <td>
+        <a href="{{ url_for('stock_delete', id=stock.id) }}" class="btn btn-warning btn-sm">Удалить</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+       </div>
+  </div>
+</div>
+
+
+{% else %}
+<body class="bg-dark text-light">
+<div class="d-flex align-items-center justify-content-center text-center" style="height: 100vh; ">
+    <div>
+        <p class="fw-bold fs-4 text-white mb-4">
+          Здравствуй Пользователь<br>
+          Это приложения для создания справочника складов<br>
+          Нажми кнопку "добавить" что бы добавить склад<br>
+          Нажми кнопку "редактировать" что бы редактировать склад<br>
+          После добавления склада сдесь появится ваша таблица
+        </p>
+    </div>
+</div>
+
+</body>
+{% endif%}
+{% endblock %}
